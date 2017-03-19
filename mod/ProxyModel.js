@@ -49,7 +49,7 @@ class ProxyModel {
     } catch (error) {
       
       let data = {
-        'statusCode': 502,
+        'statusCode': 500,
         'message': error
       }
 
