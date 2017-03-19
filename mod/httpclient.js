@@ -41,7 +41,9 @@ module.exports = (httpOption, param) => {
       reject(e.message);
     })
 
-    req.write(querystring.stringify(param));
+    if (param) {
+      req.write(querystring.stringify(param));      
+    }    
 
     req.end();
 
