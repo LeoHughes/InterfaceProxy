@@ -10,11 +10,11 @@ let ProxyTest = new ProxyModel(path.resolve(__dirname, './interface.json'));
   //获取多个接口数据  
   let data1 = await ProxyTest.all([
     { 'id': 'getuser', 'param': { 'name': 'l1eo', 'age': 26 } },
-    {'id': 'getdata', 'param': {'rows': 20}}
+    {'id': 'getdata', 'param': {'rows': 1}}
   ]);
 
   //获取单个接口数据  
-  let data2 = await ProxyTest.send('getdata', { 'rows': 1 });
+  let data2 = await ProxyTest.send('getdata');
 
   console.log(data1);
 

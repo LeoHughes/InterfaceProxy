@@ -39,7 +39,7 @@ class ProxyModel {
   }
 
   //launching a single request  
-  async send(id, param) {
+  async send(id, param = {}) {
     let opt = this.getHttpOption(id);
 
     try {
