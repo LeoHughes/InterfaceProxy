@@ -16,5 +16,13 @@ const path = require('path');
 const ProxyModel = require('./mod/ProxyModel');
 
 //根据接口配置文件 interface.json 地址初始化 ProxyModel
-let ProxyTest = new ProxyModel(path.resolve(__dirname, './interface.json'));
+let pm = new ProxyModel(path.resolve(__dirname, './interface.json'));
+```
+
+### API
+
+>***ProxyModel.getHttpOption(interfaceId)***
+
+```
+根据接口id（interfaceId）获得interface.json中相对应的http请求选项（httpOption）
 ```
