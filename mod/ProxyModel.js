@@ -44,7 +44,7 @@ class ProxyModel {
     const optType = Object.prototype.toString.call(option);
 
     let opt;
-    
+
     if (optType === '[object String]') {
       opt = this.getHttpOption(option);
     } else if (optType === '[object Object]') {
@@ -58,7 +58,7 @@ class ProxyModel {
 
       return data;
     } catch (error) {
-      
+
       let data = {
         'statusCode': 500,
         'message': error
@@ -87,7 +87,7 @@ class ProxyModel {
   }
 
   //launching multiple  requests
-  async all(interfacesArr=[]) {
+  async all(interfacesArr = []) {
 
     if (Object.prototype.toString.call(interfacesArr) !== '[object Array]') {
       throw ('need interface array')
@@ -95,12 +95,12 @@ class ProxyModel {
 
     if (interfacesArr.length === 0) throw ('interfacesArr is empty!');
 
-    let proxyModel = this;    
+    let proxyModel = this;
     let data = {};
-    
+
     for (let i = 0; i < interfacesArr.length; i++) {
       let element = interfacesArr[i];
-      
+
       try {
         data[element.id] = await proxyModel.send(element.id, element.param);
       } catch (error) {
@@ -108,7 +108,7 @@ class ProxyModel {
 
         console.log(error);
       }
-      
+
     }
 
     return data;
