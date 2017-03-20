@@ -7,17 +7,21 @@ let ProxyTest = new ProxyModel(path.resolve(__dirname, './interface.json'));
 //因为使用 async/await 所有获取接口数据操作要放在 async 方法下面
 (async () => {
 
+  //获取单个接口数据  
+  let zhihuData = await ProxyTest.send('getZhiHuData');
+
+  let zhihuContent = await ProxyTest.url('getZhiHuContent', JSON.parse(zhihuData).stories[0].id);
+
   //获取多个接口数据  
-  let data1 = await ProxyTest.all([
+  let localdata = await ProxyTest.all([
     { 'id': 'getuser', 'param': { 'name': 'l1eo', 'age': 26 } },
     {'id': 'getdata', 'param': {'rows': 1}}
   ]);
 
-  //获取单个接口数据  
-  let data2 = await ProxyTest.send('getdata');
+  console.log(zhihuData);
 
-  console.log(data1);
+  console.log(zhihuContent);
 
-  console.log(data2)
+  console.log(localdata);
   
 })()

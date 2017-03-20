@@ -39,8 +39,19 @@ class ProxyModel {
   }
 
   //launching a single request  
-  async send(id, param = {}) {
-    let opt = this.getHttpOption(id);
+  async send(option, param = {}) {
+
+    const optType = Object.prototype.toString.call(option);
+
+    let opt;
+    
+    if (optType === '[object String]') {
+      opt = this.getHttpOption(option);
+    } else if (optType === '[object Object]') {
+      opt = option;
+    } else {
+      throw ('option need interfaceId or httpOption!');
+    }
 
     try {
       let data = await httpclient(opt, param);
@@ -60,12 +71,29 @@ class ProxyModel {
 
   }
 
+  //launching request with url
+  async url(id, path = "") {
+    let opt = this.getHttpOption(id);
+
+    opt.path += path;
+
+    try {
+      let data = await this.send(opt);
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   //launching multiple  requests
-  async all(interfacesArr) {
+  async all(interfacesArr=[]) {
 
     if (Object.prototype.toString.call(interfacesArr) !== '[object Array]') {
       throw ('need interface array')
     }
+
+    if (interfacesArr.length === 0) throw ('interfacesArr is empty!');
 
     let proxyModel = this;    
     let data = {};
