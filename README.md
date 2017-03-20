@@ -1,9 +1,10 @@
 # InterfaceProxy
-
 ```
-|-- README.md				#	说明文件
+|-- README.md
 |-- package.json
-|-- interface.json	#	接口配置文件
-|-- app.js					#	启动文件
-|-- mod		
+|-- interface.json	# 接口配置文件
+|-- mod           	# 工具源文件
+	|-- ProxyModel.js 
+	|--	httpclient.js
+|-- app.js          # 启动文件
 ```
