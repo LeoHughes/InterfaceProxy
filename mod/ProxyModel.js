@@ -62,7 +62,7 @@ class ProxyModel {
       let data = {
         'statusCode': 500,
         'message': error
-      }
+      };
 
       return data;
 

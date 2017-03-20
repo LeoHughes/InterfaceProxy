@@ -18,10 +18,10 @@ let pm = new ProxyModel(path.resolve(__dirname, './interface.json'));
     {'id': 'getdata', 'param': {'rows': 1}}
   ]);
 
-  console.log(zhihuData);
-
+  console.log(zhihuData);  
+ 
   console.log(zhihuContent);
-
+ 
   console.log(localdata);
   
 })()

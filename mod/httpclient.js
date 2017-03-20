@@ -23,14 +23,32 @@ module.exports = (httpOption, param) => {
       res.on('end', () => {
         console.log('---end---');
 
-      if (statusCode.indexOf(4) !== -1 || statusCode.indexOf(5) !== -1) {
-        resolve({
-          'statusCode': res.statusCode,
-          'message': res.statusMessage
-        });
-      } else {
-        resolve(JSON.parse(data.toString('utf-8')));        
-      }
+        if (statusCode.indexOf(4) !== -1 || statusCode.indexOf(5) !== -1) {
+
+          resolve({
+            'statusCode': res.statusCode,
+            'message': res.statusMessage
+          });
+
+        } else {
+
+          try {
+
+            let jsonData = JSON.parse(data.toString('utf-8'));
+            resolve(jsonData);
+
+          } catch (error) {
+
+            console.log(error);
+
+            resolve({
+              'statusCode': res.statusCode,
+              'message': error
+            });
+            
+          }
+
+        }
 
       })
 
@@ -42,8 +60,8 @@ module.exports = (httpOption, param) => {
     })
 
     if (param) {
-      req.write(querystring.stringify(param));      
-    }    
+      req.write(querystring.stringify(param));
+    }
 
     req.end();
 
