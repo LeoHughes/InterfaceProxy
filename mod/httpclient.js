@@ -29,7 +29,7 @@ module.exports = (httpOption, param) => {
           'message': res.statusMessage
         });
       } else {
-        resolve(data.toString('utf-8'));        
+        resolve(JSON.parse(data.toString('utf-8')));        
       }
 
       })

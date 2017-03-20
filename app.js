@@ -10,7 +10,7 @@ let ProxyTest = new ProxyModel(path.resolve(__dirname, './interface.json'));
   //获取单个接口数据  
   let zhihuData = await ProxyTest.send('getZhiHuData');
 
-  let zhihuContent = await ProxyTest.url('getZhiHuContent', JSON.parse(zhihuData).stories[0].id);
+  let zhihuContent = await ProxyTest.url('getZhiHuContent', zhihuData.stories[0].id);
 
   //获取多个接口数据  
   let localdata = await ProxyTest.all([
