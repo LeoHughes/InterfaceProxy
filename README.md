@@ -30,12 +30,12 @@ let pm = new ProxyModel(path.resolve(__dirname, './interface.json'));
 ```js
 let opt = pm.getHttpOption('')
 
-<!--{
-	hostname: 'news-at.zhihu.com',
-  port: 80,
-  path: '/api/4/news/latest',
-  method: 'GET',
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' } 
-}-->
+//{
+//  hostname: 'news-at.zhihu.com',
+//  port: 80,
+//  path: '/api/4/news/latest',
+//  method: 'GET',
+//  headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' } 
+//}
 
 ```
