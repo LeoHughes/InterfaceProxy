@@ -59,3 +59,20 @@ let opt = pm.getHttpOption('getZhiHuData')
 
 * id: [String] 接口id
 * path: [String] 需要拼接的地址
+
+
+>***ProxyModel.all(oprionArr)***
+
+```
+根据配置数组（interfaces）获取多接口数据
+```
+
+* oprionArr: [Array] 接口配置数组
+
+```js
+  // //获取多个接口数据  
+  let localdata = await pm.all([
+    { 'id': 'getuser', 'param': { 'name': 'l1eo', 'age': 26 } },
+    {'id': 'getdata', 'param': {'rows': 1}}
+  ]);
+```
