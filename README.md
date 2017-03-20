@@ -69,10 +69,5 @@ let opt = pm.getHttpOption('getZhiHuData')
 
 * oprionArr: [Array] 接口配置数组
 
-```js
-  // //获取多个接口数据  
-  let localdata = await pm.all([
-    { 'id': 'getuser', 'param': { 'name': 'l1eo', 'age': 26 } },
-    {'id': 'getdata', 'param': {'rows': 1}}
-  ]);
-```
+
+### 详细调用及参数规范请查看app.js
