@@ -28,7 +28,7 @@ let pm = new ProxyModel(path.resolve(__dirname, './interface.json'));
 ```
 
 ```js
-let opt = pm.getHttpOption('')
+let opt = pm.getHttpOption('getZhiHuData')
 
 //{
 //  hostname: 'news-at.zhihu.com',
@@ -39,3 +39,11 @@ let opt = pm.getHttpOption('')
 //}
 
 ```
+
+>***ProxyModel.send(option[,param])***
+
+```
+根据option发起单个接口的请求
+```
+
+* option：<String | Object> 接口id（interfaceId）或者 完整的http请求参数（httpOption）
