@@ -46,4 +46,16 @@ let opt = pm.getHttpOption('getZhiHuData')
 根据option发起单个接口的请求
 ```
 
-* option：<String | Object> 接口id（interfaceId）或者 完整的http请求参数（httpOption）
+* option：[String | Object] 接口id（interfaceId）或者 完整的http请求参数（httpOption）
+
+* param: [Object] 请求接口需要的相关参数
+
+
+>***ProxyModel.url(id, path)***
+
+```
+根据接口id（interfaceId）和 path 重新拼接httpOption的path参数然后再请求
+```
+
+* id: [String] 接口id
+* path: [String] 需要拼接的地址
