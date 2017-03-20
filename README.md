@@ -26,3 +26,16 @@ let pm = new ProxyModel(path.resolve(__dirname, './interface.json'));
 ```
 根据接口id（interfaceId）获得interface.json中相对应的http请求选项（httpOption）
 ```
+
+```js
+let opt = pm.getHttpOption('')
+
+<!--{
+	hostname: 'news-at.zhihu.com',
+  port: 80,
+  path: '/api/4/news/latest',
+  method: 'GET',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' } 
+}-->
+
+```
