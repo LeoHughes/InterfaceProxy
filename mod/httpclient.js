@@ -7,6 +7,12 @@ module.exports = (httpOption, param) => {
 
     let data = [];
 
+    let resContent = {
+      'statusCode': '',
+      'message': '',
+      'content': ''
+    }
+
     httpOption.headers["Content-Length"] = querystring.stringify(param).length;
 
     let req = http.request(httpOption, (res) => {
@@ -23,28 +29,30 @@ module.exports = (httpOption, param) => {
       res.on('end', () => {
         console.log('---end---');
 
+        resContent.statusCode = res.statusCode;
+        resContent.message = res.statusMessage;        
+
         if (statusCode.indexOf(4) !== -1 || statusCode.indexOf(5) !== -1) {
 
-          resolve({
-            'statusCode': res.statusCode,
-            'message': res.statusMessage
-          });
+          resolve(resContent);
 
         } else {
 
           try {
 
-            let jsonData = JSON.parse(data.toString('utf-8'));
-            resolve(jsonData);
+            resContent.content = JSON.parse(data.toString('utf-8'));
+
+            resolve(resContent);
 
           } catch (error) {
 
             console.log(error);
 
-            resolve({
-              'statusCode': res.statusCode,
-              'message': error
-            });
+            resContent.content = data.toString('utf-8');
+
+            resContent.message = error;
+
+            resolve(resContent);
             
           }
 
