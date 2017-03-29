@@ -5,13 +5,18 @@ let httpclient = require('./httpclient');
 
 class ProxyModel {
 
+  //构造函数，将interface的配置挂载到ProxyModel对象上
   constructor(filepath) {
 
     _getInterfaces.call(this, filepath);
 
   }
 
-  //get httpOption from interfaceId  
+  /**
+   * 根据interfaceId获取httpOption
+   *
+   * @param  {string} interfaceId 接口id
+   */
   getHttpOption(interfaceId) {
 
     let interfaceOption = this.interfaces.find((v) => {
@@ -38,7 +43,12 @@ class ProxyModel {
 
   }
 
-  //launching a single request  
+  /**
+   * 发起单个接口请求
+   *
+   * @param  {string | object} option 接口id | 接口请求的配置
+   * @param  {object} param 需要发送到接口的数据
+   */
   async send(option, param = {}) {
 
     const optType = Object.prototype.toString.call(option);
@@ -65,17 +75,20 @@ class ProxyModel {
       };
 
       return data;
-
-      console.log(error);
     }
 
   }
 
-  //launching request with url
+  /**
+   * 拼接请求路径发起请求
+   *
+   * @param  {string} id 接口id
+   * @param  {string | number} path 需要拼接的路径
+   */
   async url(id, path = "") {
     let opt = this.getHttpOption(id);
 
-    opt.path += path;
+    opt.path += path.toString();
 
     try {
       let data = await this.send(opt);
@@ -86,7 +99,11 @@ class ProxyModel {
     }
   }
 
-  //launching multiple  requests
+  /**
+   * 根据配置数组发起多接口请求
+   *
+   * @param  {array} interfacesArr 接口配置数组
+   */
   async all(interfacesArr = []) {
 
     if (Object.prototype.toString.call(interfacesArr) !== '[object Array]') {
