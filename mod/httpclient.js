@@ -58,7 +58,7 @@ module.exports = (httpOption, param) => {
 
           try {
 
-            resContent.content = JSON.parse(data.toString('utf-8'));
+            resContent.content = JSON.parse(data.join('').toString('utf-8'));
 
             resolve(resContent);
 
@@ -66,7 +66,7 @@ module.exports = (httpOption, param) => {
 
             console.log(error);
 
-            resContent.content = data.toString('utf-8');
+            resContent.content = data.join('').toString('utf-8');
 
             resContent.message = error;
 
