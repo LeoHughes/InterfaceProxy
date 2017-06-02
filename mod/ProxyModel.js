@@ -1,6 +1,6 @@
-let path = require('path');
-let fs = require('fs');
-let httpclient = require('./httpclient');
+let path = require('path')
+let fs = require('fs')
+let httpclient = require('./httpclient')
 
 
 class ProxyModel {
@@ -8,7 +8,7 @@ class ProxyModel {
   //构造函数，将interface的配置挂载到ProxyModel对象上
   constructor(filepath) {
 
-    _getInterfaces.call(this, filepath);
+    _getInterfaces.call(this, filepath)
 
   }
 
@@ -20,16 +20,16 @@ class ProxyModel {
   getHttpOption(interfaceId) {
 
     let interfaceOption = this.interfaces.find((v) => {
-      return v.id === interfaceId;
+      return v.id === interfaceId
     })
 
-    if (!interfaceOption) throw new Error('not find this interface!');
+    if (!interfaceOption) throw new Error('not find this interface!')
 
     let serverOption = this.servers.find((v) => {
-      return v.id === interfaceOption.serverId;
+      return v.id === interfaceOption.serverId
     })
 
-    if (!serverOption) throw new Error('not find this server!');
+    if (!serverOption) throw new Error('not find this server!')
 
     let httpOption = {
       hostname: serverOption.hostname,
@@ -39,7 +39,7 @@ class ProxyModel {
       headers: interfaceOption.headers
     }
 
-    return httpOption;
+    return httpOption
 
   }
 
@@ -51,22 +51,30 @@ class ProxyModel {
    */
   async send(option, param = {}) {
 
-    const optType = Object.prototype.toString.call(option);
+    const optType = Object.prototype.toString.call(option)
 
-    let opt;
+    let opt
 
     if (optType === '[object String]') {
-      opt = this.getHttpOption(option);
+
+      opt = this.getHttpOption(option)
+
     } else if (optType === '[object Object]') {
-      opt = option;
+
+      opt = option
+
     } else {
-      throw ('option need interfaceId or httpOption!');
+
+      throw ('option need interfaceId or httpOption!')
+
     }
 
     try {
-      let data = await httpclient(opt, param);
+
+      let data = await httpclient(opt, param)
 
       return data;
+
     } catch (error) {
 
       let data = {
@@ -74,7 +82,8 @@ class ProxyModel {
         'message': error
       };
 
-      return data;
+      return data
+
     }
 
   }
@@ -86,16 +95,20 @@ class ProxyModel {
    * @param  {string | number} path 需要拼接的路径
    */
   async url(id, path = "") {
-    let opt = this.getHttpOption(id);
+    let opt = this.getHttpOption(id)
 
-    opt.path += path.toString();
+    opt.path += path.toString()
 
     try {
-      let data = await this.send(opt);
 
-      return data;
+      let data = await this.send(opt)
+
+      return data
+
     } catch (error) {
+
       throw error;
+
     }
   }
 
@@ -110,55 +123,68 @@ class ProxyModel {
       throw ('need interface array')
     }
 
-    if (interfacesArr.length === 0) throw ('interfacesArr is empty!');
+    if (interfacesArr.length === 0) throw ('interfacesArr is empty!')
 
-    let proxyModel = this;
-    let data = {};
+    let proxyModel = this
+    let data = {}
+    let len = interfacesArr.length
 
-    for (let i = 0; i < interfacesArr.length; i++) {
-      let element = interfacesArr[i];
+    for (let i = 0; i < len; i++) {
+
+      let element = interfacesArr[i]
 
       try {
-        data[element.id] = await proxyModel.send(element.id, element.param);
-      } catch (error) {
-        data[element.id] = {};
 
-        console.log(error);
+        data[element.id] = await proxyModel.send(element.id, element.param)
+
+      } catch (error) {
+
+        data[element.id] = {}
+
+        console.log(error)
+
       }
 
     }
 
-    return data;
+    return data
 
   }
 
 }
 
 
-module.exports = ProxyModel;
+module.exports = ProxyModel
 
 
 //get interfaces from filepath
 function _getInterfaces(filepath) {
 
-  if (!filepath) throw 'Need a interface.json!';
+  if (!filepath) throw 'Need a interface.json!'
 
-  let interfaces;
+  let interfaces
 
   try {
-    interfaces = fs.readFileSync(filepath, 'utf-8');
+
+    interfaces = fs.readFileSync(filepath, 'utf-8')
+
   } catch (error) {
-    throw error;
+
+    throw error
+
   }
 
   try {
-    let interfaceData = JSON.parse(interfaces);
+
+    let interfaceData = JSON.parse(interfaces)
 
     this.servers = interfaceData.servers
-    this.interfaces = interfaceData.interfaces;
+    this.interfaces = interfaceData.interfaces
 
   } catch (error) {
-    throw error;
+
+    throw error
+
   }
 
 }
