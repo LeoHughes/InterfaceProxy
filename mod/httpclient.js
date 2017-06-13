@@ -21,14 +21,14 @@ module.exports = (httpOption, param) => {
     let reqTimer = null
     let req = null
 
-    // 请求3秒超时
+    // 请求超时则中断
     reqTimer = setTimeout(() => {
 
       req.abort()
 
       console.log(`${req.path} is request timeout.`)
 
-    }, httpOption.timeOut)
+    }, httpOption.timeOut || 3000)
 
     //创建http request 请求    
     req = http.request(httpOption, (res) => {
