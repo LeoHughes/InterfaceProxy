@@ -28,7 +28,7 @@ module.exports = (httpOption, param) => {
 
       console.log(`${req.path} is request timeout.`)
 
-    }, 3000)
+    }, httpOption.timeOut)
 
     //创建http request 请求    
     req = http.request(httpOption, (res) => {

@@ -1,22 +1,22 @@
 {
   "project": "Interface-proxy",
   "version": "1.0.0",
-  "servers": [
-    {
+  "servers": [{
       "id": "localhost",
       "name": "localhost",
+      "timeOut": 2000,
       "hostname": "127.0.0.1",
       "port": 3000
     },
     {
       "id": "zhihu",
       "name": "知乎",
+      "timeOut": 5000,
       "hostname": "news-at.zhihu.com",
       "port": 80
     }
   ],
-  "interfaces": [
-    {
+  "interfaces": [{
       "id": "getuser",
       "name": "获取用户信息",
       "path": "/getuser",
@@ -52,7 +52,8 @@
       "headers": {
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
       },
-      "param": {}
+      "param": {},
+      "timeOut": 6000
     },
     {
       "id": "getZhiHuContent",
@@ -68,4 +69,4 @@
       }
     }
   ]
-} 
+}

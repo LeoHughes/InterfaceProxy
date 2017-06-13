@@ -36,7 +36,8 @@ class ProxyModel {
       port: serverOption.port,
       path: interfaceOption.path,
       method: interfaceOption.method,
-      headers: interfaceOption.headers
+      headers: interfaceOption.headers,
+      timeOut: interfaceOption.timeOut || serverOption.timeOut
     }
 
     return httpOption
