@@ -1,6 +1,6 @@
-let path = require('path')
-let fs = require('fs')
-let httpclient = require('./httpclient')
+const path = require('path')
+const fs = require('fs')
+const httpclient = require('./httpclient')
 
 
 class ProxyModel {

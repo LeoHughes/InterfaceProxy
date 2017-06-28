@@ -1,5 +1,5 @@
-let http = require('http')
-let querystring = require('querystring')
+const http = require('http')
+const querystring = require('querystring')
 
 module.exports = (httpOption, param) => {
 
