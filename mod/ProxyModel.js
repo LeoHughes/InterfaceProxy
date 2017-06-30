@@ -74,14 +74,14 @@ class ProxyModel {
 
       let data = await httpclient(opt, param)
 
-      return data;
+      return data
 
     } catch (error) {
 
       let data = {
         'statusCode': 500,
         'message': error
-      };
+      }
 
       return data
 
@@ -108,7 +108,7 @@ class ProxyModel {
 
     } catch (error) {
 
-      throw error;
+      throw error
 
     }
   }
