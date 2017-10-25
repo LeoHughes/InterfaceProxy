@@ -26,7 +26,7 @@ module.exports = (httpOption, param) => {
 
       req.abort()
 
-      console.log('\x1B[31m%s\x1B[39m', `${req.path} is request timeout.`)
+      console.log('\x1B[31m%s\x1B[39m', `[Timeout]:${httpOption.hostname}${httpOption.path}`)
 
     }, httpOption.timeOut || 3000)
 
@@ -38,16 +38,13 @@ module.exports = (httpOption, param) => {
 
       let statusCode = res.statusCode.toString()
 
-      console.log('\x1B[1m%s\x1B[22m', '[---start---]');
-      console.log('\x1B[32m%s\x1b[39m:', `${httpOption.path} statusCode is ${statusCode}`)
+      console.log('\x1B[32m%s\x1b[39m:', `[Success]:${httpOption.hostname}${httpOption.path}`)
 
       res.on('data', (chunk) => {
         data.push(chunk)
       })
 
       res.on('end', () => {
-
-        console.log('\x1B[1m%s\x1B[22m', '[---end---]')
 
         resContent.statusCode = res.statusCode
         resContent.message = res.statusMessage
