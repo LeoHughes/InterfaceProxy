@@ -128,25 +128,12 @@ class ProxyModel {
 
     let proxyModel = this
     let data = {}
-    let len = interfacesArr.length
 
-    for (let i = 0; i < len; i++) {
+    let sendPromises = interfacesArr.map(element => {
+      return httpclient(proxyModel.getHttpOption(element.id), element.param)
+    })
 
-      let element = interfacesArr[i]
-
-      try {
-
-        data[element.id] = await proxyModel.send(element.id, element.param)
-
-      } catch (error) {
-
-        data[element.id] = {}
-
-        console.log(error)
-
-      }
-
-    }
+    data = await Promise.all(sendPromises)
 
     return data
 

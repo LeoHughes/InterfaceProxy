@@ -26,7 +26,7 @@ module.exports = (httpOption, param) => {
 
       req.abort()
 
-      console.log(`${req.path} is request timeout.`)
+      console.log('\x1B[31m%s\x1B[39m', `${req.path} is request timeout.`)
 
     }, httpOption.timeOut || 3000)
 
@@ -38,8 +38,8 @@ module.exports = (httpOption, param) => {
 
       let statusCode = res.statusCode.toString()
 
-      console.log('---start---');
-      console.log(`statusCode is ${statusCode}`)
+      console.log('\x1B[1m%s\x1B[22m', '[---start---]');
+      console.log('\x1B[32m%s\x1b[39m:', `${httpOption.path} statusCode is ${statusCode}`)
 
       res.on('data', (chunk) => {
         data.push(chunk)
@@ -47,7 +47,7 @@ module.exports = (httpOption, param) => {
 
       res.on('end', () => {
 
-        console.log('---end---')
+        console.log('\x1B[1m%s\x1B[22m', '[---end---]')
 
         resContent.statusCode = res.statusCode
         resContent.message = res.statusMessage
@@ -66,7 +66,7 @@ module.exports = (httpOption, param) => {
 
           } catch (error) {
 
-            console.log(error)
+            console.log('\x1B[31m%s\x1B[39m', error)
 
             resContent.content = data.join('').toString('utf-8')
 
@@ -83,8 +83,13 @@ module.exports = (httpOption, param) => {
     });
 
     req.on('error', (e) => {
-      console.log(e.message)
-      reject(e.message)
+      console.log('\x1B[31m%s\x1B[39m', `[Error]:${e.message}`)
+
+      resContent.statusCode = 500
+      resContent.message = e.message
+      resContent.content = null
+
+      resolve(resContent)
     })
 
     //如果有请求数据则写入到请求    
