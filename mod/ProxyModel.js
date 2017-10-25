@@ -5,10 +5,35 @@ const httpclient = require('./httpclient')
 
 class ProxyModel {
 
-  //构造函数，将interface的配置挂载到ProxyModel对象上
+  //将interface的配置挂载到ProxyModel对象上
   constructor(filepath) {
 
-    _getInterfaces.call(this, filepath)
+    if (!filepath) throw 'Need a interface.json!'
+
+    let interfaces
+
+    try {
+
+      interfaces = fs.readFileSync(filepath, 'utf-8')
+
+    } catch (error) {
+
+      throw error
+
+    }
+
+    try {
+
+      let interfaceData = JSON.parse(interfaces)
+
+      this.servers = interfaceData.servers
+      this.interfaces = interfaceData.interfaces
+
+    } catch (error) {
+
+      throw error
+
+    }
 
   }
 
@@ -121,7 +146,7 @@ class ProxyModel {
   async all(interfacesArr = []) {
 
     if (Object.prototype.toString.call(interfacesArr) !== '[object Array]') {
-      throw ('need interface array')
+      throw ('need interface array!')
     }
 
     if (interfacesArr.length === 0) throw ('interfacesArr is empty!')
@@ -143,36 +168,3 @@ class ProxyModel {
 
 
 module.exports = ProxyModel
-
-
-//get interfaces from filepath
-function _getInterfaces(filepath) {
-
-  if (!filepath) throw 'Need a interface.json!'
-
-  let interfaces
-
-  try {
-
-    interfaces = fs.readFileSync(filepath, 'utf-8')
-
-  } catch (error) {
-
-    throw error
-
-  }
-
-  try {
-
-    let interfaceData = JSON.parse(interfaces)
-
-    this.servers = interfaceData.servers
-    this.interfaces = interfaceData.interfaces
-
-  } catch (error) {
-
-    throw error
-
-  }
-
-}
