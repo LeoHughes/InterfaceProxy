@@ -44,8 +44,6 @@ module.exports = (httpOption, param) => {
 
       let startMS = new Date().getTime()
 
-      // console.log('\x1B[32m%s\x1b[39m:', `[Success]:${httpOption.hostname}${httpOption.path}`)
-
 
       res.on('data', (chunk) => {
         data.push(chunk)
