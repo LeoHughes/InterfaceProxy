@@ -18,8 +18,10 @@ module.exports = (httpOption, param) => {
     //设置http请求内容长度    
     httpOption.headers["Content-Length"] = querystring.stringify(param).length
 
+
     let reqTimer = null
     let req = null
+
 
     // 请求超时则中断
     reqTimer = setTimeout(() => {
@@ -30,21 +32,34 @@ module.exports = (httpOption, param) => {
 
     }, httpOption.timeOut || 3000)
 
+
+
     //创建http request 请求    
-    req = http.request(httpOption, (res) => {
+    req = http.request(httpOption, res => {
 
       //建立请求则清除超时
       clearTimeout(reqTimer)
 
       let statusCode = res.statusCode.toString()
 
-      console.log('\x1B[32m%s\x1b[39m:', `[Success]:${httpOption.hostname}${httpOption.path}`)
+      let startMS = new Date().getTime()
+
+      // console.log('\x1B[32m%s\x1b[39m:', `[Success]:${httpOption.hostname}${httpOption.path}`)
+
 
       res.on('data', (chunk) => {
         data.push(chunk)
       })
 
+
       res.on('end', () => {
+
+        let endMS = new Date().getTime()
+
+        console.log(
+          '\x1B[32m%s\x1b[39m:',
+          `[Success]:${httpOption.hostname}${httpOption.path} -- ${endMS - startMS}ms`
+        )
 
         resContent.statusCode = res.statusCode
         resContent.message = res.statusMessage
@@ -77,9 +92,10 @@ module.exports = (httpOption, param) => {
 
       })
 
-    });
+    })
 
-    req.on('error', (e) => {
+
+    req.on('error', e => {
       console.log('\x1B[31m%s\x1B[39m', `[Error]:${e.message}`)
 
       resContent.statusCode = 500
