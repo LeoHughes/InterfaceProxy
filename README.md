@@ -10,7 +10,7 @@
 ```
 
 ```
-nodejs >= 7.0.0
+nodejs >= 7.6.0
 ```
 
 ### How to use
@@ -68,7 +68,7 @@ let opt = pm.getHttpOption('getZhiHuData')
 >***ProxyModel.all(oprionArr)***
 
 ```
-根据配置数组（interfaces）获取多接口数据
+根据配置数组（interfaces）并发获取多接口数据
 ```
 
 * oprionArr: [Array] 接口配置数组
