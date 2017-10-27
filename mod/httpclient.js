@@ -56,7 +56,7 @@ module.exports = (httpOption, param) => {
 
         console.log(
           '\x1B[32m%s\x1b[39m:',
-          `[Success]:${httpOption.hostname}${httpOption.path} -- ${endMS - startMS}ms`
+          `[Success]: ${httpOption.method} ==> ${httpOption.hostname}${httpOption.path} -- ${endMS - startMS}ms`
         )
 
         resContent.statusCode = res.statusCode
