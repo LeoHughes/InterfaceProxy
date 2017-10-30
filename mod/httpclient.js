@@ -10,6 +10,8 @@ module.exports = (httpOption, param) => {
 
     //定义返回数据的结构    
     let resContent = {
+      'id': httpOption.id, //接口id
+      'desc': httpOption.desc, //接口简短说明
       'statusCode': '', //状态码
       'message': '', //说明信息
       'content': '' //返回的数据内容

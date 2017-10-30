@@ -57,6 +57,8 @@ class ProxyModel {
     if (!serverOption) throw new Error('not find this server!')
 
     let httpOption = {
+      id: interfaceOption.id,
+      desc: interfaceOption.name,
       hostname: serverOption.hostname,
       port: serverOption.port,
       path: interfaceOption.path,
