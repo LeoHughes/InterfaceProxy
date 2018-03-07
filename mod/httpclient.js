@@ -3,7 +3,7 @@ const querystring = require('querystring')
 
 module.exports = (httpOption, param) => {
 
-  return new Promise(function(resolve, reject) {
+  return new Promise((resolve, reject) => {
 
     //用于存储接收数据的数组    
     let data = []
@@ -96,7 +96,7 @@ module.exports = (httpOption, param) => {
 
 
     req.on('error', e => {
-      console.log('\x1B[31m%s\x1B[39m', `[Error]:${e.message}`)
+      console.log('\x1B[31m%s\x1B[39m', `[Error]:${httpOption.method} ==> ${httpOption.hostname}${httpOption.path} ${e.message}`)
 
       resContent.statusCode = 500
       resContent.message = e.message
