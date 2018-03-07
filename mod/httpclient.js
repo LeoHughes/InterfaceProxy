@@ -56,7 +56,7 @@ module.exports = (httpOption, param, headers) => {
       let startMS = new Date().getTime()
 
 
-      res.on('data', (chunk) => {
+      res.on('data', chunk => {
         data.push(chunk)
       })
 

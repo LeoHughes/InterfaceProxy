@@ -44,13 +44,13 @@ class ProxyModel {
    */
   getHttpOption(interfaceId) {
 
-    let interfaceOption = this.interfaces.find((v) => {
+    let interfaceOption = this.interfaces.find(v => {
       return v.id === interfaceId
     })
 
     if (!interfaceOption) throw new Error('not find this interface!')
 
-    let serverOption = this.servers.find((v) => {
+    let serverOption = this.servers.find(v => {
       return v.id === interfaceOption.serverId
     })
 
