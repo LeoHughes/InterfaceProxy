@@ -8,21 +8,27 @@ let pm = new ProxyModel(path.resolve(__dirname, './interface.json'));
 
 (async() => {
 
-  //获取单个接口数据  
-  //let zhihuData = await pm.send('getZhiHuData')
+  //单个请求  
+  let zhihuData1 = await pm.send('getZhiHuData')
 
-  //let zhihuContent = await pm.url('getZhiHuContent', zhihuData.content.stories[0].id)
+  //单个请求并设置额外请求头
+  let zhihuData2 = await pm.send('getZhiHuData', null, { token: '123456' })
 
-  //获取多个接口数据  
+  //单个拼接路径请求
+  let zhihuContent = await pm.url('getZhiHuContent', zhihuData1.content.stories[0].id, null, { token: '123456' })
+
+  //多请求并分别设置额外请求头  
   let localdata = await pm.all([
-    { 'id': 'getZhiHuData' },
-    { 'id': 'getuser', 'param': { 'name': 'l1eo', 'age': 26 } },
-    { 'id': 'getdata', 'param': { 'rows': 1 } }
+    { 'id': 'getZhiHuData', 'param': {}, 'headers': { 'token': '123' } },
+    { 'id': 'getuser', 'param': { 'name': 'l1eo', 'age': 26 }, 'headers': { 'token': '456' } },
+    { 'id': 'getdata', 'param': { 'rows': 1 }, 'headers': { 'token': '789' } }
   ])
 
-  // console.log(zhihuData)
+  console.log(zhihuData1)
 
-  // console.log(zhihuContent)
+  console.log(zhihuData2)
+
+  console.log(zhihuContent)
 
   console.log(localdata)
 

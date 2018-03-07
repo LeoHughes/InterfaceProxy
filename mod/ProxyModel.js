@@ -76,8 +76,9 @@ class ProxyModel {
    *
    * @param  {string | object} option 接口id | 接口请求的配置
    * @param  {object} param 需要发送到接口的数据
+   * @param  {object} headers 额外的请求头
    */
-  async send(option, param = {}) {
+  async send(option, param = {}, headers = {}) {
 
     const optType = Object.prototype.toString.call(option)
 
@@ -99,7 +100,7 @@ class ProxyModel {
 
     try {
 
-      let data = await httpclient(opt, param)
+      let data = await httpclient(opt, param, headers)
 
       return data
 
@@ -121,15 +122,17 @@ class ProxyModel {
    *
    * @param  {string} id 接口id
    * @param  {string | number} path 需要拼接的路径
+   * @param  {object} param 需要发送到接口的数据
+   * @param  {object} headers 额外的请求头
    */
-  async url(id, path = "") {
+  async url(id, path = "", param = {}, headers = {}) {
     let opt = this.getHttpOption(id)
 
     opt.path += path.toString()
 
     try {
 
-      let data = await this.send(opt)
+      let data = await this.send(opt, {}, headers)
 
       return data
 
@@ -157,7 +160,7 @@ class ProxyModel {
     let data = {}
 
     let sendPromises = interfacesArr.map(element => {
-      return httpclient(proxyModel.getHttpOption(element.id), element.param)
+      return httpclient(proxyModel.getHttpOption(element.id), element.param, element.headers)
     })
 
     data = await Promise.all(sendPromises)

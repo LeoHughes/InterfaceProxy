@@ -1,7 +1,7 @@
 const http = require('http')
 const querystring = require('querystring')
 
-module.exports = (httpOption, param) => {
+module.exports = (httpOption, param, headers) => {
 
   return new Promise((resolve, reject) => {
 
@@ -18,7 +18,16 @@ module.exports = (httpOption, param) => {
     }
 
     //设置http请求内容长度    
-    httpOption.headers["Content-Length"] = querystring.stringify(param).length
+    httpOption.headers['Content-Length'] = querystring.stringify(param).length
+
+    //设置额外请求头
+    for (const key in headers) {
+      if (headers.hasOwnProperty(key)) {
+        const element = headers[key]
+
+        httpOption.headers[key] = element
+      }
+    }
 
 
     let reqTimer = null
