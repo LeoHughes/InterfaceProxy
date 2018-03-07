@@ -15,6 +15,10 @@ nodejs >= 7.6.0
 
 ### How to use
 
+1.在json文件中定义好请求的服务器地址以及接口相关配置
+2.实例化ProxyModel类然后调用
+
+
 ```js
 const path = require('path');
 const ProxyModel = require('./mod/ProxyModel');
@@ -50,9 +54,9 @@ let opt = pm.getHttpOption('getZhiHuData')
 根据option发起单个接口的请求
 ```
 
-* option：[String | Object] 接口id（interfaceId）或者 完整的http请求参数（httpOption）
-
+* option：[String | Object] 接口id（interfaceId）或者 完整的http请求参数(httpOption)
 * param: [Object] 请求接口需要的相关参数
+* headers: [Object] 额外的请求头设置
 
 
 >***ProxyModel.url(id, path)***
@@ -63,6 +67,8 @@ let opt = pm.getHttpOption('getZhiHuData')
 
 * id: [String] 接口id
 * path: [String] 需要拼接的地址
+* param: [Object] 请求接口需要的相关参数
+* headers: [Object] 额外的请求头设置
 
 
 >***ProxyModel.all(oprionArr)***
