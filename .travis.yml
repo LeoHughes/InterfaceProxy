@@ -4,5 +4,4 @@ before_script:
   - npm install 
   - npm test
 node_js:
-  - "7"
   - "8"
