@@ -107,7 +107,7 @@ class ProxyModel {
 
     } else {
 
-      throw ('option need interfaceId or httpOption!')
+      throw new Error('Option need interfaceId or httpOption!')
 
     }
 
@@ -138,7 +138,8 @@ class ProxyModel {
    * @param  {object} param 需要发送到接口的数据
    * @param  {object} headers 额外的请求头
    */
-  async url(id, path = "", param = {}, headers = {}) {
+  async url(id, path = '', param = {}, headers = {}) {
+
     let opt = this.getHttpOption(id)
 
     opt.path += path.toString()
@@ -154,6 +155,7 @@ class ProxyModel {
       throw error
 
     }
+
   }
 
   /**
@@ -164,10 +166,10 @@ class ProxyModel {
   async all(interfacesArr = []) {
 
     if (Object.prototype.toString.call(interfacesArr) !== '[object Array]') {
-      throw new Error('need interface array!')
+      throw new Error('Need interface array!')
     }
 
-    if (interfacesArr.length === 0) throw new Error('interfacesArr is empty!')
+    if (interfacesArr.length === 0) throw new Error('InterfacesArr is empty!')
 
     let proxyModel = this
     let data = {}
