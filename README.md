@@ -1,5 +1,7 @@
 # InterfaceProxy
 
+[![Build Status](https://www.travis-ci.org/LeoHughes/InterfaceProxy.svg?branch=master)](https://www.travis-ci.org/LeoHughes/InterfaceProxy)
+
 ```
  Need nodejs >= 7.6.0
 ```
