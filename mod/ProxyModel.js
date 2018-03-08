@@ -37,7 +37,7 @@ class ProxyModel {
 
     try {
 
-      let interfaceData = typeof interfaces === 'object' ? interfaces : JSON.parse(interfaces)
+      let interfaceData = Object.prototype.toString.call(interfaces) === '[object Object]' ? interfaces : JSON.parse(interfaces)
 
       this.servers = interfaceData.servers
       this.interfaces = interfaceData.interfaces
@@ -61,13 +61,13 @@ class ProxyModel {
       return v.id === interfaceId
     })
 
-    if (!interfaceOption) throw new Error('not find this interface!')
+    if (!interfaceOption) throw new Error('Not find this interface!')
 
     let serverOption = this.servers.find(v => {
       return v.id === interfaceOption.serverId
     })
 
-    if (!serverOption) throw new Error('not find this server!')
+    if (!serverOption) throw new Error('Not find this server!')
 
     let httpOption = {
       id: interfaceOption.id,
