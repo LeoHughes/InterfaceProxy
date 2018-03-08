@@ -8,7 +8,7 @@ class ProxyModel {
   //将interface的配置挂载到ProxyModel对象上
   constructor(filepath) {
 
-    if (!filepath) throw 'Need a interface.json!'
+    if (!filepath) throw new Error('Need a interface.json!')
 
     let interfaces
 
@@ -24,7 +24,7 @@ class ProxyModel {
 
       } else {
 
-        throw new Error('only support .js or .json')
+        throw new Error('Only support .js or .json')
 
       }
 
@@ -164,10 +164,10 @@ class ProxyModel {
   async all(interfacesArr = []) {
 
     if (Object.prototype.toString.call(interfacesArr) !== '[object Array]') {
-      throw ('need interface array!')
+      throw new Error('need interface array!')
     }
 
-    if (interfacesArr.length === 0) throw ('interfacesArr is empty!')
+    if (interfacesArr.length === 0) throw new Error('interfacesArr is empty!')
 
     let proxyModel = this
     let data = {}
