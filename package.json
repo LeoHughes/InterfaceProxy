@@ -1,8 +1,27 @@
 {
-  "name": "interface-proxy",
+  "name": "interfaceproxy",
   "version": "1.0.3",
-  "description": "",
-  "main": "app.js",
+  "description": "Interface proxy tools based on nodejs",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoHughes/InterfaceProxy.git"
+  },
+  "keywords": [
+    "proxyModel",
+    "interfaceproxy"
+  ],
   "author": "LeoHughes",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LeoHughes/InterfaceProxy/issues"
+  },
+  "homepage": "https://github.com/LeoHughes/InterfaceProxy#readme"
 }

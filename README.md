@@ -1,32 +1,23 @@
 # InterfaceProxy
-```
-|-- README.md
-|-- package.json
-|-- interface.json	# 接口配置文件
-|-- mod           	# 工具源文件
-	|-- ProxyModel.js 
-	|-- httpclient.js
-|-- app.js		# 启动文件
-```
 
 ```
-nodejs >= 7.6.0
+ Need nodejs >= 7.6.0
 ```
 
 ### How to use
 
-1.在json文件或js中定义好请求的服务器地址以及接口相关配置   
-2.实例化ProxyModel类然后调用
+1.Define the requested server address and the interface-related configuration in the json file or js.
+
+2.Instantiate the ProxyModel class and then call it.
 
 
 ```js
 const path = require('path');
-const ProxyModel = require('./mod/ProxyModel');
+const InterfaceProxy = require('interfaceproxy');
 
-//根据接口配置文件 interface.json 地址初始化 ProxyModel
-let pm = new ProxyModel(path.resolve(__dirname, './interface.json'));
+let pm = new InterfaceProxy(path.resolve(__dirname, './interface.json'));
 
-let pm = new ProxyModel(path.resolve(__dirname, './interface.js'));
+let pm = new InterfaceProxy(path.resolve(__dirname, './interface.js'));
 ```
 
 ### API
@@ -34,7 +25,7 @@ let pm = new ProxyModel(path.resolve(__dirname, './interface.js'));
 >***ProxyModel.getHttpOption(interfaceId)***
 
 ```
-根据接口id（interfaceId）获得interface.json中相对应的http请求选项（httpOption）
+Obtain the corresponding http request option in interface.json based on the interface id
 ```
 
 ```js
@@ -53,33 +44,33 @@ let opt = pm.getHttpOption('getZhiHuData')
 >***ProxyModel.send(option[,param])***
 
 ```
-根据option发起单个接口的请求
+According to the option to initiate a single interface request
 ```
 
-* option：[String | Object] 接口id（interfaceId）或者 完整的http请求参数(httpOption)
-* param: [Object] 请求接口需要的相关参数
-* headers: [Object] 额外的请求头设置
+* option：[String | Object] Interface id or complete http request parameters (httpOption)
+* param: [Object] Relevant parameters required for the request interface
+* headers: [Object] Other headers
 
 
 >***ProxyModel.url(id, path)***
 
 ```
-根据接口id（interfaceId）和 path 重新拼接httpOption的path参数然后再请求
+Reconcatenate the httpOption path parameter according to the interface id and path and then request
 ```
 
-* id: [String] 接口id
-* path: [String] 需要拼接的地址
-* param: [Object] 请求接口需要的相关参数
-* headers: [Object] 额外的请求头设置
+* id: [String] Interface id
+* path: [String] Need to splicing address
+* param: [Object] Relevant parameters required by the request interface
+* headers: [Object] Other headers
 
 
 >***ProxyModel.all(oprionArr)***
 
 ```
-根据配置数组（interfaces）并发获取多接口数据
+Multi-interface data is obtained concurrently according to the configuration array
 ```
 
-* oprionArr: [Array] 接口配置数组
+* oprionArr: [Array] Interface configuration array
 
 
-### 详细调用及参数规范请查看app.js
+### Interface configuration data format reference files interface.json and interface.js

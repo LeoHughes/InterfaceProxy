@@ -1,5 +1,5 @@
 const path = require('path');
-const ProxyModel = require('./mod/ProxyModel');
+const ProxyModel = require('./lib/ProxyModel');
 
 //根据接口配置文件 interface.json 地址初始化 ProxyModel
 let pm = new ProxyModel(path.resolve(__dirname, './interface.json'));
