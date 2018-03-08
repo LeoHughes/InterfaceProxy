@@ -22,7 +22,7 @@ let pm = new InterfaceProxy(path.resolve(__dirname, './interface.js'));
 
 ### API
 
->***ProxyModel.getHttpOption(interfaceId)***
+>***InterfaceProxy.getHttpOption(interfaceId)***
 
 ```
 Obtain the corresponding http request option in interface.json based on the interface id
@@ -41,7 +41,7 @@ let opt = pm.getHttpOption('getZhiHuData')
 
 ```
 
->***ProxyModel.send(option[,param])***
+>***InterfaceProxy.send(option[,param])***
 
 ```
 According to the option to initiate a single interface request
@@ -52,7 +52,7 @@ According to the option to initiate a single interface request
 * headers: [Object] Other headers
 
 
->***ProxyModel.url(id, path)***
+>***InterfaceProxy.url(id, path)***
 
 ```
 Reconcatenate the httpOption path parameter according to the interface id and path and then request
@@ -64,7 +64,7 @@ Reconcatenate the httpOption path parameter according to the interface id and pa
 * headers: [Object] Other headers
 
 
->***ProxyModel.all(oprionArr)***
+>***InterfaceProxy.all(oprionArr)***
 
 ```
 Multi-interface data is obtained concurrently according to the configuration array
