@@ -20,7 +20,7 @@ class ProxyModel {
 
         if (ext === '.json') interfaces = fs.readFileSync(filepath, 'utf-8')
 
-        if (ext === '.js') interfaces = require('../interface')
+        if (ext === '.js') interfaces = require(filepath)
 
       } else {
 
