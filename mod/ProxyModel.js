@@ -14,7 +14,20 @@ class ProxyModel {
 
     try {
 
-      interfaces = fs.readFileSync(filepath, 'utf-8')
+      let { ext } = path.parse(filepath)
+
+      if (ext === '.js' || ext === '.json') {
+
+        if (ext === '.json') interfaces = fs.readFileSync(filepath, 'utf-8')
+
+        if (ext === '.js') interfaces = require('../interface')
+
+      } else {
+
+        throw new Error('only support .js or .json')
+
+      }
+
 
     } catch (error) {
 
@@ -24,7 +37,7 @@ class ProxyModel {
 
     try {
 
-      let interfaceData = JSON.parse(interfaces)
+      let interfaceData = typeof interfaces === 'object' ? interfaces : JSON.parse(interfaces)
 
       this.servers = interfaceData.servers
       this.interfaces = interfaceData.interfaces
