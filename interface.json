@@ -79,7 +79,7 @@
             "id": "getTaoBaoContent",
             "name": "taobao",
             "path": "/sug",
-            "serverId": "douban",
+            "serverId": "taobao",
             "method": "GET",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
