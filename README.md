@@ -75,4 +75,31 @@ Multi-interface data is obtained concurrently according to the configuration arr
 * oprionArr: [Array] Interface configuration array
 
 
-### Interface configuration data format reference files interface.json and interface.js
+### Interface Configuration Format Reference
+
+```js
+module.exports = {
+  project: "Interface-proxy",
+  version: "1.0.0",
+  servers: [{ //Server address config
+      id: "localhost",
+      name: "localhost",
+      timeOut: 2000, //The number of milliseconds the request times out
+      hostname: "127.0.0.1",
+      port: 3000
+    }
+  ],
+  interfaces: [{ //Request interface address and related configuration
+      id: "getuser",
+      name: "获取用户信息",
+      path: "/getuser",
+      serverId: "localhost",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
+      }
+    }
+  ]
+};
+
+```
