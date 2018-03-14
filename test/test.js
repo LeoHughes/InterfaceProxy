@@ -21,13 +21,25 @@ describe('InterfaceProxy', () => {
 
   });
 
-  it('mostRequestExtend -> response', async() => {
+  it('mostRequestExtendByAll -> response', async() => {
 
     let response = await pm.all([
       { 'id': 'getZhiHuData', 'param': {}, 'headers': { 'token': '123' } },
       { 'id': 'getuser', 'param': { 'name': 'l1eo', 'age': 26 }, 'headers': { 'token': '456' } },
       { 'id': 'getdata', 'param': { 'rows': 1 }, 'headers': { 'token': '789' } }
     ])
+
+    assert.ok(response != null)
+
+  })
+
+  it('mostRequestExtendByRace -> response', async() => {
+
+    let response = await pm.all([
+      { 'id': 'getZhiHuData', 'param': {}, 'headers': { 'token': '123' } },
+      { 'id': 'getuser', 'param': { 'name': 'l1eo', 'age': 26 }, 'headers': { 'token': '456' } },
+      { 'id': 'getdata', 'param': { 'rows': 1 }, 'headers': { 'token': '789' } }
+    ], 'race')
 
     assert.ok(response != null)
 

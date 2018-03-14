@@ -1,6 +1,6 @@
 {
   "name": "interfaceproxy",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Interface proxy tools based on nodejs",
   "main": "index.js",
   "directories": {
@@ -16,7 +16,9 @@
   },
   "keywords": [
     "proxyModel",
-    "interfaceproxy"
+    "interfaceproxy",
+    "NodeJS",
+    "Interface proxy tools"
   ],
   "author": "LeoHughes",
   "license": "MIT",

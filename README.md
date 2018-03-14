@@ -73,7 +73,7 @@ Multi-interface data is obtained concurrently according to the configuration arr
 ```
 
 * oprionArr: [Array] Interface configuration array
-
+* type:[String] See promise.all and promise.race
 
 ### Interface Configuration Format Reference
 
