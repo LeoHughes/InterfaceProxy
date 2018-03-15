@@ -85,6 +85,7 @@ module.exports = {
       id: "localhost",
       name: "localhost",
       timeOut: 2000, //The number of milliseconds the request times out
+      protocol: 'http:',
       hostname: "127.0.0.1",
       port: 3000
     }

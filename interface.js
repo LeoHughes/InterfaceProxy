@@ -5,6 +5,7 @@ module.exports = {
       id: "localhost",
       name: "localhost",
       timeOut: 2000,
+      protocol: 'http:',
       hostname: "127.0.0.1",
       port: 3000
     },
