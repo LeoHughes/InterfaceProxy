@@ -2,12 +2,12 @@ module.exports = {
   project: "Interface-proxy",
   version: "1.0.0",
   servers: [{
-      id: "localhost",
-      name: "localhost",
+      id: "baidu",
+      name: "baidu",
       timeOut: 2000,
       protocol: 'http:',
-      hostname: "127.0.0.1",
-      port: 3000
+      hostname: "www.baidu.com",
+      port: 80
     },
     {
       id: "zhihu",
@@ -18,30 +18,13 @@ module.exports = {
     }
   ],
   interfaces: [{
-      id: "getuser",
-      name: "获取用户信息",
-      path: "/getuser",
-      serverId: "localhost",
+      id: "getBaiduHTML",
+      name: "获取baidu首页html文档",
+      path: "/",
+      serverId: "baidu",
       method: "GET",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
-      },
-      param: {
-        name: "",
-        age: ""
-      }
-    },
-    {
-      id: "getdata",
-      name: "获取数据列表",
-      path: "/getdata",
-      serverId: "localhost",
-      method: "GET",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
-      },
-      param: {
-        rows: ""
+        "Content-Type": "text/html;charset=utf-8"
       }
     },
     {

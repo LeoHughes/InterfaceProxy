@@ -43,6 +43,15 @@ let opt = pm.getHttpOption('getZhiHuData')
 
 ```
 
+>***InterfaceProxy.request(url)***
+
+```
+Request initiated based on url address
+```
+
+* url：[String] Url address
+
+
 >***InterfaceProxy.send(option[,param])***
 
 ```

@@ -6,6 +6,13 @@ describe('InterfaceProxy', () => {
 
   let pm = new ProxyModel(path.resolve(__dirname, '../interface.json'))
 
+  it('singleURLRequest -> response', async() => {
+
+    let response = await pm.request('http://www.baidu.com')
+
+    assert.ok(response != null)
+  });
+
   it('singleRequest -> response', async() => {
 
     let response = await pm.send('getZhiHuData')
@@ -15,7 +22,7 @@ describe('InterfaceProxy', () => {
 
   it('singleRequestExtend -> response', async() => {
 
-    let response = await pm.send('getTaoBaoContent', null, { q: '卫衣', code: 'utf-8' })
+    let response = await pm.send('getZhiHuData', null, { token: '123456' })
 
     assert.ok(response != null)
 
@@ -25,8 +32,7 @@ describe('InterfaceProxy', () => {
 
     let response = await pm.all([
       { 'id': 'getZhiHuData', 'param': {}, 'headers': { 'token': '123' } },
-      { 'id': 'getuser', 'param': { 'name': 'l1eo', 'age': 26 }, 'headers': { 'token': '456' } },
-      { 'id': 'getdata', 'param': { 'rows': 1 }, 'headers': { 'token': '789' } }
+      { 'id': 'getBaiduHTML', 'param': { 'name': 'l1eo', 'age': 26 }, 'headers': { 'token': '456' } }
     ])
 
     assert.ok(response != null)
@@ -37,8 +43,7 @@ describe('InterfaceProxy', () => {
 
     let response = await pm.all([
       { 'id': 'getZhiHuData', 'param': {}, 'headers': { 'token': '123' } },
-      { 'id': 'getuser', 'param': { 'name': 'l1eo', 'age': 26 }, 'headers': { 'token': '456' } },
-      { 'id': 'getdata', 'param': { 'rows': 1 }, 'headers': { 'token': '789' } }
+      { 'id': 'getBaiduHTML', 'param': { 'name': 'l1eo', 'age': 26 }, 'headers': { 'token': '456' } }
     ], 'race')
 
     assert.ok(response != null)
