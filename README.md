@@ -1,6 +1,10 @@
 # InterfaceProxy
 
 [![Build Status](https://www.travis-ci.org/LeoHughes/InterfaceProxy.svg?branch=master)](https://www.travis-ci.org/LeoHughes/InterfaceProxy)
+[![npm version](https://badge.fury.io/js/interfaceproxy.svg)](https://badge.fury.io/js/interfaceproxy)
+
+
+[![NPM](https://nodei.co/npm/interfaceproxy.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/interfaceproxy/)
 
 ```
  Need nodejs >= 7.6.0
