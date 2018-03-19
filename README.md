@@ -23,7 +23,7 @@ const InterfaceProxy = require('interfaceproxy');
 
 let pm = new InterfaceProxy(path.resolve(__dirname, './interface.json'));
 
-let pm = new InterfaceProxy(path.resolve(__dirname, './interface.js'));
+//let pm = new InterfaceProxy(path.resolve(__dirname, './interface.js'));
 ```
 
 ### API
@@ -40,23 +40,14 @@ Mount a new configuration based on the file path and add it to the instantiated 
 Obtain the corresponding http request option in interface.json based on the interface id
 ```
 
-```js
-let opt = pm.getHttpOption('getZhiHuData')
-
-//{
-//  hostname: 'news-at.zhihu.com',
-//  port: 80,
-//  path: '/api/4/news/latest',
-//  method: 'GET',
-//  headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' } 
-//}
-
-```
-
 >***InterfaceProxy.request(url)***
 
 ```
 Request initiated based on url address
+```
+
+```js
+  let resData = await pm.request('http://www.baidu.com')
 ```
 
 * url：[String] Url address
@@ -72,6 +63,22 @@ According to the option to initiate a single interface request
 * param: [Object] Relevant parameters required for the request interface
 * headers: [Object] Other headers
 
+```js
+  let resData = await pm.send('getBaiduHTML')
+
+  let resData = await pm.send('getZhiHuData', null, { token: '123456' })
+
+  let resData = await pm.send({
+    protocol: 'http:',
+    hostname: "www.baidu.com",
+    port: 80,
+    path: "/",
+    method: "GET",
+    headers: {
+      "Content-Type": "text/html;charset=utf-8"
+    }
+  })
+```
 
 >***InterfaceProxy.url(id, path)***
 
@@ -94,6 +101,13 @@ Multi-interface data is obtained concurrently according to the configuration arr
 * oprionArr: [Array] Interface configuration array
 * type:[String] See promise.all and promise.race
 
+```js
+  let multiData = await pm.all([
+    { 'id': 'getZhiHuData', 'param': {}, 'headers': { 'token': '123' } },
+    { 'id': 'getBaiduHTML', 'param': { 'name': '1eo', 'age': 26 }, 'headers': { 'token': '456' } }
+  ])
+```
+
 ### Interface Configuration Format Reference
 
 ```js
@@ -110,9 +124,9 @@ module.exports = {
     }
   ],
   interfaces: [{ //Request interface address and related configuration
-      id: "getuser",
-      name: "获取用户信息",
-      path: "/getuser",
+      id: "test",
+      name: "testPath",
+      path: "/test",
       serverId: "localhost",
       method: "GET",
       headers: {
