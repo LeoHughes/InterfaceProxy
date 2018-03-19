@@ -28,6 +28,12 @@ let pm = new InterfaceProxy(path.resolve(__dirname, './interface.js'));
 
 ### API
 
+>***InterfaceProxy.mount(filePath)***
+
+```
+Mount a new configuration based on the file path and add it to the instantiated InterfaceProxy object
+```
+
 >***InterfaceProxy.getHttpOption(interfaceId)***
 
 ```
