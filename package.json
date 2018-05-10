@@ -1,6 +1,6 @@
 {
   "name": "interfaceproxy",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Interface proxy tools based on nodejs",
   "main": "index.js",
   "directories": {
