@@ -21,7 +21,8 @@ let pm = new ProxyModel(path.resolve(__dirname, './interface.json'));
   //根据httpoption发送请求
   let baiduHTML3 = await pm.send({
     protocol: 'http:',
-    hostname: "www.baidu.com",
+    hostname: "192.168.1.57",
+    name: '测试超时请求',
     port: 80,
     path: "/",
     method: "GET",
@@ -39,16 +40,16 @@ let pm = new ProxyModel(path.resolve(__dirname, './interface.json'));
     { 'id': 'getBaiduHTML', 'param': { 'name': '1eo', 'age': 26 }, 'headers': { 'token': '456' } }
   ])
 
-  console.log(baiduHTML)
+  // console.log(baiduHTML)
 
-  console.log(zhihuData)
+  // console.log(zhihuData)
 
-  console.log(baiduHTML2)
+  // console.log(baiduHTML2)
 
-  console.log(baiduHTML3)
+  // console.log(baiduHTML3)
 
-  console.log(zhihuContent)
+  // console.log(zhihuContent)
 
-  console.log(multiData)
+  // console.log(multiData)
 
 })()
