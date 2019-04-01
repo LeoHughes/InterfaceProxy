@@ -2,6 +2,7 @@
 
 [![Build Status](https://www.travis-ci.org/LeoHughes/InterfaceProxy.svg?branch=master)](https://www.travis-ci.org/LeoHughes/InterfaceProxy)
 [![npm version](https://badge.fury.io/js/interfaceproxy.svg)](https://badge.fury.io/js/interfaceproxy)
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 
 
 [![NPM](https://nodei.co/npm/interfaceproxy.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/interfaceproxy/)
