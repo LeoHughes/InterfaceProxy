@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/LeoHughes/InterfaceProxy#readme",
   "devDependencies": {
-    "mocha": "^5.0.4"
+    "mocha": "^6.1.4"
   },
   "dependencies": {
     "signale": "^1.2.1"
