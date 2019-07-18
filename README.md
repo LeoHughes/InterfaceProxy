@@ -13,9 +13,9 @@
 
 ### How to use
 
-1.Define the requested server address and the interface-related configuration in the json file or js.
+1.在json文件或js中定义请求的服务器地址和与接口相关的配置
 
-2.Instantiate the ProxyModel class and then call it.
+2.实例化ProxyModel类，然后调用
 
 
 ```js
@@ -32,19 +32,19 @@ let pm = new InterfaceProxy(path.resolve(__dirname, './interface.json'));
 >***InterfaceProxy.mount(filePath)***
 
 ```
-Mount a new configuration based on the file path and add it to the instantiated InterfaceProxy object
+根据文件路径挂载新配置，并将其添加到实例化的InterfaceProxy对象中
 ```
 
 >***InterfaceProxy.getHttpOption(interfaceId)***
 
 ```
-Obtain the corresponding http request option in interface.json based on the interface id
+根据接口ID在配置文件中获取相应的http请求选项
 ```
 
 >***InterfaceProxy.request(url)***
 
 ```
-Request initiated based on url address
+根据URL地址发起的请求
 ```
 
 ```js
@@ -57,12 +57,12 @@ Request initiated based on url address
 >***InterfaceProxy.send(option[,param])***
 
 ```
-According to the option to initiate a single interface request
+根据参数发起单个请求
 ```
 
-* option：[String | Object] Interface id or complete http request parameters (httpOption)
-* param: [Object] Relevant parameters required for the request interface
-* headers: [Object] Other headers
+* option：[String | Object] 接口ID或完整的http请求参数（httpOption）
+* param: [Object] 请求接口所需的相关参数
+* headers: [Object] 额外的headers参数
 
 ```js
   let resData = await pm.send('getBaiduHTML')
@@ -84,23 +84,23 @@ According to the option to initiate a single interface request
 >***InterfaceProxy.url(id, path)***
 
 ```
-Reconcatenate the httpOption path parameter according to the interface id and path and then request
+根据接口ID和路径拼接httpOption路径参数，然后请求
 ```
 
-* id: [String] Interface id
-* path: [String] Need to splicing address
-* param: [Object] Relevant parameters required by the request interface
-* headers: [Object] Other headers
+* id: [String] 接口id
+* path: [String] 需要拼接的地址
+* param: [Object] 请求接口所需的相关参数
+* headers: [Object] 额外的headers参数
 
 
 >***InterfaceProxy.all(oprionArr)***
 
 ```
-Multi-interface data is obtained concurrently according to the configuration array
+根据配置数组同时获得多接口数据
 ```
 
-* oprionArr: [Array] Interface configuration array
-* type:[String] See promise.all and promise.race
+* oprionArr: [Array] 接口配置数组
+* type:[String] all:promise.all,race:promise.race
 
 ```js
   let multiData = await pm.all([
